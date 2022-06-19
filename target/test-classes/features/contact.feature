@@ -2,7 +2,7 @@ Feature: test contact page
 
   Background: contect page
     Given I am at healthcourse contact page
-
+@Test
   Scenario: Validate Contact page submit button is working with valid credentials
     And user enters valid Name
     And user enters valid company name

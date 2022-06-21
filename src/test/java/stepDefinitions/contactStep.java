@@ -11,35 +11,40 @@ public class contactStep extends setup {
 
     contactPage cp = new contactPage(driver);
 
-	@Given("I am at healthcourse contact page")
+    @Given("I am at health course contact page")
 	public void i_am_at_healthcourse_contact_page() {
 		cp.verifyHomepageTitle();
 	}
 
-	@And("user enters valid Name")
+    @And("user accepts all cookies")
+    public void user_accepts_all_cookies() {
+    	cp.acceptCookies();
+    	}
+    
+	@Then("user enters valid Name")
 	public void user_enters_valid_name() {
-		cp.entername(Hook.name);
+		cp.entername();
 	}
 
 	@And("user enters valid company name")
 	public void user_enters_valid_company_name() {
-		cp.entercompanyname(Hook.company);
+		cp.entercompanyname();
 	}
 
 	@And("user enters valid email address")
 	public void user_enters_valid_email_address() {
-		cp.enteremailaddress(Hook.email);
+		cp.enteremailaddress();
 	}
 
 	@And("user enters valid phone number")
 	public void user_enters_valid_phone_number() {
-		cp.enterphonenumber(Hook.phonenumber);
+		cp.enterphonenumber();
 		
 	}
 
 	@And("user enters a brief message")
 	public void user_enters_a_brief_message() {
-		cp.enterbriefmessage(Hook.message);
+		cp.enterbriefmessage();
 	}
 
 	@When("user click on submit button")

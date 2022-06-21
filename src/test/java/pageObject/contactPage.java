@@ -26,42 +26,48 @@ public class contactPage extends setup{
         Assert.assertEquals(exp, act);
 	}
 
-	@FindBy(how= How.NAME, using = "//input[@name='et_pb_contact_name_0']")
-    public WebElement nameaLocator;
+	@FindBy(how=How.XPATH, using = "//button[@aria-label='Close']")
+	public WebElement allcookies;
+	@FindBy(how= How.NAME, using = "et_pb_contact_name_0")
+	public WebElement nameLocator;
 	@FindBy(how= How.XPATH, using = "//input[@id='et_pb_contact_company_0']")
-    public WebElement companyLocator;
-	@FindBy(how= How.ID, using = "//input[@id='et_pb_contact_email_0']")
-    public WebElement emailLocator;
-	@FindBy(how= How.ID, using = "//input[@id='et_pb_contact_phone_number_0']")
-    public WebElement phonenumberLocator;
-	@FindBy(how= How.XPATH, using = "//textarea[@name=\"et_pb_contact_message_0\"]")
-    public WebElement messageLocator;
+	public WebElement companyLocator;
+	@FindBy(how= How.ID, using = "et_pb_contact_email_0")
+	public WebElement emailLocator;
+	@FindBy(how= How.ID, using = "et_pb_contact_phone_number_0")
+	public WebElement phonenumberLocator;
+	@FindBy(how= How.XPATH, using = "//textarea[@name='et_pb_contact_message_0']")
+	public WebElement messageLocator;
 	@FindBy(how= How.XPATH, using = "//button[@type='submit']")
-    public WebElement submitbuttonLocator;
+	public WebElement submitbuttonLocator;
 	
-	public void entername(String name) {
-		nameaLocator.sendKeys(name);
+	public void acceptCookies() {
+		allcookies.click();
 	}
 
-	public void entercompanyname(String company) {
-		
-		companyLocator.sendKeys(company);
+	public void entername() {
+		nameLocator.sendKeys("qainterview");
 	}
 
-	public void enteremailaddress(String email) {
-		emailLocator.sendKeys(email);
+	public void entercompanyname() {
+
+		companyLocator.sendKeys("realcme");
 	}
 
-	public void enterphonenumber(String phonenumber) {
-		phonenumberLocator.sendKeys(phonenumber);
+	public void enteremailaddress() {
+		emailLocator.sendKeys("winie@tryninja.io");
 	}
 
-	public void enterbriefmessage(String message) {
-		messageLocator.sendKeys(message);
+	public void enterphonenumber() {
+		phonenumberLocator.sendKeys("9999999999");
+	}
+
+	public void enterbriefmessage() {
+		messageLocator.sendKeys("This is an assignment for the QA position. Please ignore.");
 	}
 
 	public void clickonsubmit() {
-		submitbuttonLocator.click();
+		submitbuttonLocator.click();	
 	}
 
 }

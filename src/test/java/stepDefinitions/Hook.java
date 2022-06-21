@@ -9,8 +9,7 @@ import io.cucumber.java.After;
 import io.cucumber.java.Before;
 import io.cucumber.java.Scenario;
 
-public class Hook extends setup{
-
+public class Hook extends setup {
 	public static String url;
 	public static String name;
 	public static String company;
@@ -20,38 +19,41 @@ public class Hook extends setup{
 	public static String driverType = System.getProperty("browser");
 	public static String envData = System.getProperty("env");
 
-	 @Before
-	    public void startTest(){
-	        if (Strings.isNullOrEmpty(driverType)){
-	            driverType = "ch";
-	        }
-	        if (Strings.isNullOrEmpty(envData)){
-	            envData = "qa";
-	        }
-	        driver = setupBrowser(driverType);
-	        switch (envData){
-	            case "qa":
-	                url = "https://www.healthcourse.com/contact/";
-	                name = "qainterview";
-	                company = "realcme";
-	                email = "winie@tryninja.io";
-	                phonenumber = "9999999999";
-	                message = "This is an assignment for the QA position. Please ignore.";
-	                break;
-	            
-	        }
-	        driver.get(url);
-	    }
+    @Before
+    public void startTest(){
+        if (Strings.isNullOrEmpty(driverType)){
+            driverType = "ch";
+        }
+        if (Strings.isNullOrEmpty(envData)){
+            envData = "prod";
+        }
+        driver = setupBrowser(driverType);
+        switch (envData){
+            case "qa":
+                url = "https://qa.healthcourse.com/contact/";
+                break;
+            case "stage":
+                url = "https://stage.healthcourse.com/contact/";
+                break;
+            case "prod":
+                url = "https://www.healthcourse.com/contact/";
+           
+                break;
+        }
+        driver.get(url);
+    }
 
-	    @After
-	    public void endTest(Scenario scenario){
-	        try {
-	            if (scenario.isFailed()){
-	                final byte[] screenshot = ((TakesScreenshot) driver).getScreenshotAs(OutputType.BYTES);
-	                // embed it in the report.
-	                scenario.attach(screenshot, "image/png", scenario.getName());
-	            }
-	        } finally {
-	            driver.quit();
-	        }
-	    }}
+    @After
+    public void endTest(Scenario scenario){
+        try {
+            if (scenario.isFailed()){
+                final byte[] screenshot = ((TakesScreenshot) driver).getScreenshotAs(OutputType.BYTES);
+                // embed it in the report.
+                scenario.attach(screenshot, "image/png", scenario.getName());
+            }
+        } finally {
+            driver.quit();
+        }
+    }
+
+}
